@@ -4,17 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from "react-router-dom";
-import {Provider} from "react-redux";
-import {store} from "./store";
+import {RecoilRoot} from "recoil";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
     <Router>
-        <Provider store={store}>
+        <RecoilRoot>
             <App/>
-        </Provider>
+        </RecoilRoot>
     </Router>
 );
 

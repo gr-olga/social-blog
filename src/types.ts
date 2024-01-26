@@ -1,8 +1,8 @@
  export interface BlogState{
     title: string;
-    category: string;
+    category: {};
     photoUrl: string | null;
-    mainText: string;
+    content: string;
 }
 
  export interface InitialState {

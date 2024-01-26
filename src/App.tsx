@@ -1,17 +1,28 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.css';
-import {getBlogsApi} from "./store/actions";
-import {useAppDispatch} from "./hooks";
+import {useRecoilValue} from "recoil";
+import {getBlogsState} from "./store";
+import {BlogState} from "./types";
 
 function App() {
-    const dispatch = useAppDispatch();
-    useEffect(() => {
-        dispatch(getBlogsApi)
-    }, [dispatch])
+    const blogs = useRecoilValue(getBlogsState);
+console.log(blogs);
     return (
         <div className="App">
             <header className="App-header">
-                Hello
+         <div>
+                <h1>My Blog</h1>
+                <div>
+                    {blogs.map((blog: BlogState, index: number) => (
+                        <div key={index}>
+                            <h3>{blog.title}</h3>
+                            {/*<p>{blog.category}</p>*/}
+                            <div>{blog.content}</div>
+                        </div>
+                    ))}
+                </div>
+         </div>
+
             </header>
         </div>
     );

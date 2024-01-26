@@ -1,11 +1,19 @@
-import {configureStore} from "@reduxjs/toolkit";
-import appStateReducer from "./sclice";
+import {atom, selector} from "recoil";
+import {getBlogs} from "../services/blog-service";
 
-export const store = configureStore({
-    reducer: {
-        appState: appStateReducer,
-    },
+export const blogsState = atom({
+    key: 'blogs',
+    default: [],
+});
+const categoriesState = atom({
+    key: 'categories',
+    default: [],
 });
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+ export const getBlogsState = selector({
+    key: 'getBlogsState',
+     get: async ({get}) => {
+         const res = await getBlogs();
+         return res.data;
+     }
+});
