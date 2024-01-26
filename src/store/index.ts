@@ -5,9 +5,14 @@ export const blogsState = atom({
     key: 'blogs',
     default: [],
 });
-const categoriesState = atom({
-    key: 'categories',
-    default: [],
+const postForBlog = atom({
+    key: 'postForBlog',
+    default: {
+        title: '',
+        category: '',
+        img_url: '',
+        content: '',
+    },
 });
 
  export const getBlogsState = selector({

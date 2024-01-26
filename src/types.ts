@@ -1,7 +1,7 @@
  export interface BlogState{
     title: string;
     category: {};
-    photoUrl: string | null;
+    imgUrl: string | null;
     content: string;
 }
 
