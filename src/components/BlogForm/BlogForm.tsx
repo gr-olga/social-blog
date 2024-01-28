@@ -9,6 +9,7 @@ export default function BlogForm() {
     const [formData, setFormData] = useState({
         name: '',
         category: 'Tech',
+        //TODO not sure how to handle file upload so far
         file: '',
         message: ''
     });
