@@ -26,7 +26,7 @@ export default function LatestPosts() {
                             title={blog.title}
                             category={blog.category}
                             content={blog.content}
-                            imgUrl={blog.imgUrl}
+                            img_url={blog.img_url}
                             created_at={blog.created_at}
                         />
                     )

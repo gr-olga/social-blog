@@ -1,7 +1,7 @@
 .blogItem {
   height: 217px;
   width: 285px;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 
   &__header {
@@ -13,11 +13,12 @@
   }
 
   &__headerItem {
-    color: #FFFFFF;
+    color: #868686;
     font-family: "Inter", sans-serif;
     font-size: 8px;
     font-style: italic;
     line-height: 10px;
+    margin-inline: 10px;
   }
 
   &__infoContainer {
