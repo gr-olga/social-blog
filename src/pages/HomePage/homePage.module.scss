@@ -1,6 +1,8 @@
 .homePage {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  gap: 24px;
 
   &__item {
     display: flex;
@@ -10,15 +12,13 @@
 
     &.form {
       width: 42%;
-      //TODO debug
-      background: grey;
+      max-width: 659px;
     }
 
     &.latest {
-      width: 58%;
+      flex-wrap: wrap;
       padding: 24px;
-      //TODO debug
-      background: darkgray;
+      gap: 24px;
     }
   }
 }
