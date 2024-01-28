@@ -8,3 +8,9 @@ export async function getBlogs() {
         {headers: {'token': token}});
     return res.data;
 }
+
+export async function getBlogCategories() {
+    const res = await axios.get(`${Url}categories`,
+        {headers: {'token': token}});
+    return res.data;
+}

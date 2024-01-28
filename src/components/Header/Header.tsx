@@ -1,14 +1,17 @@
 import styles from './header.module.scss';
+import {NavLink} from "react-router-dom";
 
 export default function Header() {
 
     return (
         <div className={styles.header_main}
-             style={{background:`no-repeat, url('${process.env.PUBLIC_URL}/HeaderBack.png')`}}>
-            <div>Current</div>
+             style={{background: `no-repeat, url('${process.env.PUBLIC_URL}/HeaderBack.png')`}}>
             <div>
-                <h2>Home</h2>
-                <h2>Blog</h2>
+                <img src={`${process.env.PUBLIC_URL}/logo.svg`} alt="logo"/>
+            </div>
+            <div>
+                <NavLink to={'./'}>Home</NavLink>
+                <NavLink to={'./blog'}>Blog</NavLink>
             </div>
         </div>
     )

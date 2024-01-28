@@ -4,9 +4,9 @@ import Header from "./components/Header/Header";
 import {Route, Routes} from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import BlogPage from "./pages/BlogPage/BlogPage";
+import {getCategoriesState} from "./store";
 
 function App() {
-
     return (
         <div className="App">
             <Header/>
