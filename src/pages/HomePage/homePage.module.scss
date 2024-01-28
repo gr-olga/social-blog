@@ -1,0 +1,23 @@
+.homePage {
+  display: flex;
+  flex-direction: row;
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    &.form {
+      width: 42%;
+      //TODO debug
+      background: grey;
+    }
+
+    &.latest {
+      width: 58%;
+      //TODO debug
+      background: darkgray;
+    }
+  }
+}

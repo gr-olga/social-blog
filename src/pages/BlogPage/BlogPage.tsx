@@ -5,7 +5,10 @@ import React from "react";
 
 export default function BlogPage() {
     const blogs = useRecoilValue(getBlogsState);
+
+    //TODO remove console.lo;
     console.log(blogs);
+
     return (
         <div>
             <div>
