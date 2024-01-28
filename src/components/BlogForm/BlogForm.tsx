@@ -24,9 +24,11 @@ export default function BlogForm() {
                 <input className={styles.blogForm__input} type="file"/>
             </div>
             <div className={styles.blogForm__row}>
-                <input className={styles.blogForm__input} type="text" maxLength={5000} placeholder="Bericht"/>
+                <textarea className={styles.blogForm__input} rows={12} placeholder="Bericht"/>
             </div>
-            <button>Bericht aanmaken</button>
+            <div className={`${styles.blogForm__row} ${styles.centered}`}>
+                <button className={styles.blogForm__button}>Bericht aanmaken</button>
+            </div>
         </div>
     )
 }

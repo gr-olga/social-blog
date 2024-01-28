@@ -50,10 +50,30 @@
 
   &__input {
     @include formInput;
-
   }
 
   &__select {
     @include formInput;
   }
+
+  &__button {
+    //TODO font is not connected
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 15px;
+    border-radius: 20px;
+    color: #FFFFFF;
+    background-color: #F27623;
+    box-shadow: none;
+    border-color: transparent;
+    padding: 12px 48px;
+    max-width: 202px;
+  }
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
