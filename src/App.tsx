@@ -14,7 +14,6 @@ function App() {
                     <Routes>
                         <Route path="/" element={<HomePage/>}/>
                         <Route path="/blog" element={<BlogPage/>}/>
-
                     </Routes>
                 </React.Suspense>
             </div>
