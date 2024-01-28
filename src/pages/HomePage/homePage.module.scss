@@ -16,6 +16,9 @@
 
     &.latest {
       max-width: 59%;
+      display: flex;
+      border-radius: 3px;
+      background-color: #FFF;
     }
   }
 }

@@ -3,7 +3,6 @@ import styles from './homePage.module.scss';
 import LatestPosts from "../../components/LatestPosts/LatestPosts";
 
 export default function HomePage() {
-
     return (
         <div className={styles.homePage}>
             <div className={`${styles.homePage__item} ${styles.form}`}>

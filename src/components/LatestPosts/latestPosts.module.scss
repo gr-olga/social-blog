@@ -1,12 +1,33 @@
 .latestPosts {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   padding: 24px;
-  gap: 24px;
   border-radius: 3px;
-
-  width: 100%;
   background-color: #FFF;
+  align-items: center;
+  gap: 126px;
 
+
+  &__items {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  &__button {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 15px;
+    border-radius: 20px;
+    color: #FFFFFF;
+    background-color: #F27623;
+    box-shadow: none;
+    border-color: transparent;
+    padding: 12px 48px;
+    max-width: 202px;
+    cursor: pointer;
+  }
 }

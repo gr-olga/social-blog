@@ -1,13 +1,13 @@
 export interface BlogState {
     title: string;
-    category: {};
+    category: Category;
     imgUrl: string | null;
     content: string;
+    created_at: string;
 }
-
 export interface InitialState {
     blogs: BlogState[];
-    categories: string[];
+    categories: Category[];
 }
 
 export interface Category {

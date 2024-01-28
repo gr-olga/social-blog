@@ -1,17 +1,19 @@
 import styles from './blogItem.module.scss';
+import {BlogState} from "../../types";
 
-export default function BlogItem() {
-
+export default function BlogItem(props: BlogState) {
+    const {title, content, imgUrl, category, created_at} = props;
+    const date = new Date(created_at).toLocaleDateString();
     return (
         <div className={styles.blogItem}>
             <div className={styles.blogItem__header}>
-                <div className={styles.blogItem__headerItem}>date</div>
-                <div className={styles.blogItem__headerItem}>category</div>
+                <div className={styles.blogItem__headerItem}>{date}</div>
+                <div className={styles.blogItem__headerItem}>{category.name}</div>
             </div>
             <div className={styles.blogItem__infoContainer}>
-                <h3 className={styles.blogItem__title}>Heading</h3>
+                <h3 className={styles.blogItem__title}>{title}</h3>
                 <p className={styles.blogItem__message}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget metus blandit, pharetra nisi eu, aliquet leo. risus, id lobortis massa ultrices nec.
+                    {content}
                 </p>
             </div>
         </div>
