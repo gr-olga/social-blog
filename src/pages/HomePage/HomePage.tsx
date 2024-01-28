@@ -1,5 +1,6 @@
 import BlogForm from "../../components/BlogForm/BlogForm";
 import styles from './homePage.module.scss';
+import BlogItem from "../../components/BlogItem/BlogItem";
 
 export default function HomePage() {
 
@@ -9,7 +10,12 @@ export default function HomePage() {
                 <BlogForm/>
             </div>
             <div className={`${styles.homePage__item} ${styles.latest}`}>
-                latest posts
+                {/*TODO debug*/}
+                <BlogItem />
+                <BlogItem />
+                <BlogItem />
+                <BlogItem />
+                {/*TODO debug end*/}
             </div>
         </div>
     )
