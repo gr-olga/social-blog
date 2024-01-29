@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import {Route, Routes} from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import BlogPage from "./pages/BlogPage/BlogPage";
+import Footer from "./components/Footer/Footer";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                     </Routes>
                 </React.Suspense>
             </div>
+            <Footer/>
         </div>
     );
 }
