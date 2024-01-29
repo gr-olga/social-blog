@@ -3,10 +3,15 @@ import BlogItem from "../BlogItem/BlogItem";
 import {useRecoilValue} from "recoil";
 import {getBlogsState} from "../../store";
 import {BlogState} from "../../types";
+import {useState} from "react";
 
 export default function LatestPosts() {
     const blogs = useRecoilValue(getBlogsState);
-    let displayingBlogs = 4;
+    const [displayingBlogs, setDisplayingBlogs] = useState(4);
+
+    function downloadMoreBlogs() {
+        setDisplayingBlogs(displayingBlogs + 4);
+    }
 
     const latestBlogs = [...blogs].sort((a: BlogState, b: BlogState) => {
         let dateA = new Date(a.created_at);
@@ -14,7 +19,6 @@ export default function LatestPosts() {
         return dateA.getTime() - dateB.getTime();
     });
 
-    console.log(111, latestBlogs);
 
     return (
         <div className={styles.latestPosts}>
@@ -32,7 +36,7 @@ export default function LatestPosts() {
                     )
                 })}
             </div>
-            <button className={styles.latestPosts__button}>Laad meer</button>
+            <button className={styles.latestPosts__button} onClick={downloadMoreBlogs}>Laad meer</button>
         </div>
     )
 }
