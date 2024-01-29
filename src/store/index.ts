@@ -1,20 +1,12 @@
 import {atom, selector} from "recoil";
-import {getBlogCategories, getBlogs} from "../services/blog-service";
+import {getBlogCategories, getBlogs, postBlogs} from "../services/blog-service";
 import {Category} from "../types";
 
 export const blogsState = atom({
     key: 'blogs',
     default: [],
 });
-const postForBlog = atom({
-    key: 'postForBlog',
-    default: {
-        title: '',
-        category: '',
-        img_url: '',
-        content: '',
-    },
-});
+
 export const categoriesState = atom({
     key: 'categories',
     default: [],
@@ -34,3 +26,11 @@ export const getCategoriesState = selector({
         return res.map((category: Category) => category.name)
     }
 })
+
+// export const postBlogState = selector({
+//     key: 'postBlogState',
+//     get: async ({get}) => {
+//         const res = await postBlogs(postFormBlog);
+//         return res.data;
+//     }
+// })

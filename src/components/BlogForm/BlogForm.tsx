@@ -2,26 +2,27 @@ import {useRecoilValue} from "recoil";
 import {getCategoriesState} from "../../store";
 import styles from './blogForm.module.scss';
 import {ChangeEvent, FormEvent, useState} from "react";
+import {postBlogs} from "../../services/blog-service";
 
 export default function BlogForm() {
     const categories = useRecoilValue(getCategoriesState);
 
-    const [formData, setFormData] = useState({
-        name: '',
-        category: 'Tech',
-        //TODO not sure how to handle file upload so far
-        file: '',
-        message: ''
+    const [formData , setFormData] = useState({
+        title: '',
+        content: '',
+        category_id: 0,
+        image: 'images/DNoh95AIBgPYrDwzv0GVKdSX5YedFjzIrbLRqGG1.jpg'
     });
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setFormData({...formData, [e.target.name]: e.target.value});
     };
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         //TODO: handle submit
         console.log(formData);
+        void postBlogs(formData);
     };
 
     return (
@@ -30,17 +31,17 @@ export default function BlogForm() {
             <div className={styles.blogForm__row}>
                 <label className={styles.blogForm__label} htmlFor="title">Berichtnaam</label>
                 <input type="text"
-                       name="name"
+                       name="title"
                        className={styles.blogForm__input}
-                       value={formData.name}
+                       value={formData.title}
                        onChange={handleChange}
                        placeholder="Geen title"/>
             </div>
             <div className={styles.blogForm__row}>
                 <label className={styles.blogForm__label} htmlFor="category">Categorie</label>
-                <select name="category"
+                <select name="category_id"
                         className={styles.blogForm__select}
-                        value={formData.category}
+                        value={formData.category_id}
                         onChange={handleChange}
                 >
                     {categories.map((category: string, index: number) => (
@@ -54,9 +55,9 @@ export default function BlogForm() {
             </div>
             <div className={styles.blogForm__row}>
                 <textarea className={styles.blogForm__input}
-                          name="message"
+                          name="content"
                           rows={12}
-                          value={formData.message}
+                          value={formData.content}
                           onChange={handleChange}
                           placeholder="Bericht"
                 />
