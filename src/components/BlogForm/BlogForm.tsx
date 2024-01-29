@@ -22,7 +22,12 @@ export default function BlogForm() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        void postBlogs(formData);
+        const data = new FormData();
+        data.append('image', formData.image);
+        data.append('title', formData.title);
+        data.append('category_id', String(formData.category_id));
+        data.append('content', formData.content);
+        void postBlogs(data as any);
     };
 
     return (
