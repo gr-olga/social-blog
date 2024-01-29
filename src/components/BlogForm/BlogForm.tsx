@@ -16,13 +16,12 @@ export default function BlogForm() {
     });
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
-        setFormData({...formData, [e.target.name]: e.target.value});
+        const isFile: boolean = e.target.name === 'image';
+        setFormData({...formData, [e.target.name]: isFile ? (e.target as any).files[0] : e.target.value});
     };
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
-        //TODO: handle submit
-        console.log(formData);
         void postBlogs(formData);
     };
 
@@ -36,7 +35,8 @@ export default function BlogForm() {
                        className={styles.blogForm__input}
                        value={formData.title}
                        onChange={handleChange}
-                       placeholder="Geen title"/>
+                       placeholder="Geen title"
+                       required/>
             </div>
             <div className={styles.blogForm__row}>
                 <label className={styles.blogForm__label} htmlFor="category">Categorie</label>
@@ -44,6 +44,7 @@ export default function BlogForm() {
                         className={styles.blogForm__select}
                         value={formData.category_id}
                         onChange={handleChange}
+                        required
                 >
                     {categories.map((category: Category, index: number) => (
                         <option key={index} value={category.id}>{category.name}</option>
@@ -54,8 +55,10 @@ export default function BlogForm() {
                 <label className={styles.blogForm__label} htmlFor="file">Header afbeelding</label>
                 <input className={styles.blogForm__input}
                        type="file"
-                       value={formData.image}
-                       onChange={handleChange}/>
+                       name="image"
+                       onChange={handleChange}
+                       required
+                />
             </div>
             <div className={styles.blogForm__row}>
                 <textarea className={styles.blogForm__input}
@@ -64,6 +67,7 @@ export default function BlogForm() {
                           value={formData.content}
                           onChange={handleChange}
                           placeholder="Bericht"
+                          required
                 />
             </div>
             <div className={`${styles.blogForm__row} ${styles.centered}`}>
