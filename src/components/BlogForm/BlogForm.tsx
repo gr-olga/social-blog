@@ -3,15 +3,16 @@ import {getCategoriesState} from "../../store";
 import styles from './blogForm.module.scss';
 import {ChangeEvent, FormEvent, useState} from "react";
 import {postBlogs} from "../../services/blog-service";
+import {Category} from "../../types";
 
 export default function BlogForm() {
     const categories = useRecoilValue(getCategoriesState);
 
-    const [formData , setFormData] = useState({
+    const [formData, setFormData] = useState({
         title: '',
         content: '',
-        category_id: 0,
-        image: 'images/DNoh95AIBgPYrDwzv0GVKdSX5YedFjzIrbLRqGG1.jpg'
+        category_id: 1,
+        image: ''
     });
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
@@ -44,14 +45,17 @@ export default function BlogForm() {
                         value={formData.category_id}
                         onChange={handleChange}
                 >
-                    {categories.map((category: string, index: number) => (
-                        <option key={index} value={category}>{category}</option>
+                    {categories.map((category: Category, index: number) => (
+                        <option key={index} value={category.id}>{category.name}</option>
                     ))}
                 </select>
             </div>
             <div className={styles.blogForm__row}>
                 <label className={styles.blogForm__label} htmlFor="file">Header afbeelding</label>
-                <input className={styles.blogForm__input} type="file"/>
+                <input className={styles.blogForm__input}
+                       type="file"
+                       value={formData.image}
+                       onChange={handleChange}/>
             </div>
             <div className={styles.blogForm__row}>
                 <textarea className={styles.blogForm__input}

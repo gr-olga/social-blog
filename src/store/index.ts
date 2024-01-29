@@ -23,7 +23,7 @@ export const getCategoriesState = selector({
     key: 'getCategoriesState',
     get: async ({get}) => {
         const res = await getBlogCategories();
-        return res.map((category: Category) => category.name)
+        return res.map((category: Category) => category)
     }
 })
 
