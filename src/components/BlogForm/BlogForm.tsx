@@ -7,13 +7,14 @@ import {Category} from "../../types";
 
 export default function BlogForm() {
     const categories = useRecoilValue(getCategoriesState);
-
-    const [formData, setFormData] = useState({
+    const formInitialState = {
         title: '',
         content: '',
         category_id: 1,
         image: ''
-    });
+    }
+
+    const [formData, setFormData] = useState(formInitialState);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>): void => {
         const isFile: boolean = e.target.name === 'image';
@@ -28,6 +29,7 @@ export default function BlogForm() {
         data.append('category_id', String(formData.category_id));
         data.append('content', formData.content);
         void postBlogs(data as any);
+        setFormData(formInitialState);
     };
 
     return (
