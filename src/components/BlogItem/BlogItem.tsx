@@ -4,7 +4,7 @@ import {BlogState} from "../../types";
 export default function BlogItem(props: BlogState) {
     const {title, content, img_url, category, created_at} = props;
     const date = new Date(created_at).toLocaleDateString();
-    console.log(111, img_url);
+
     return (
         <div className={styles.blogItem}>
             <div className={styles.blogItem__header}  style={{background: `no-repeat, url('${img_url}')`}}>

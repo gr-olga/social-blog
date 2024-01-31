@@ -1,19 +1,30 @@
-import {useRecoilValue} from "recoil";
-import {getBlogsState} from "../../store";
-import {BlogState} from "../../types";
-import React, {useState} from "react";
-import BlogItem from "../../components/BlogItem/BlogItem";
+import {useRecoilState, useRecoilValue} from "recoil";
+import {currentPaginationState, getPaginationState} from "../../store";
+import React, {useEffect, useState} from "react";
 import styles from './blogePage.module.scss';
+import axios from "axios";
+import PaginationComponent from "../../components/PaginationComponent/PaginationComponent";
+import BlogItem from "../../components/BlogItem/BlogItem";
+import {BlogState} from "../../types";
 
 export default function BlogPage() {
-    const blogs = useRecoilValue(getBlogsState);
-    // const ITEMS_PER_PAGE = 10;
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const indexOfLastBlog = currentPage * ITEMS_PER_PAGE;
-    // const indexOfFirstBlog = indexOfLastBlog - ITEMS_PER_PAGE;
-    // const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
+    const blogs = useRecoilValue(getPaginationState);
+    const [totalPosts, setTotalPosts] = useState(0);
+    const [currentPage, setCurrentPage] = useRecoilState(currentPaginationState);
+    const [postsPerPage] = useState(10);
 
-    // const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+    useEffect(() => {
+        const fetchData = async () => {
+            await axios.get("https://frontend-case-api.sbdev.nl/api/posts", {headers: {'token': 'pj11daaQRz7zUIH56B9Z'}}).then((res) => {
+                setTotalPosts(res.data.total);
+            });
+        };
+        void fetchData();
+    }, []);
+
+
+    const pageHandler = (pageNumber: number): void => setCurrentPage(pageNumber);
+
     return (
         <div className={styles.blogPage}>
             <div className={styles.blogPage__list}>
@@ -27,15 +38,9 @@ export default function BlogPage() {
                     />
                 ))}
             </div>
-            {/*<div className={styles.blogPage__pagination}>*/}
-            {/*    {Array.from({length: Math.ceil(blogs.length / ITEMS_PER_PAGE)}).map(*/}
-            {/*        (_, index) => (*/}
-            {/*            <button key={index} onClick={() => paginate(index + 1)}>*/}
-            {/*                {index + 1}*/}
-            {/*            </button>*/}
-            {/*        )*/}
-            {/*    )}*/}
-            {/*</div>*/}
+            <PaginationComponent onChangePage={pageHandler}
+                                 postsPerPage={postsPerPage}
+                                 totalPosts={totalPosts}/>
         </div>
     )
 }
