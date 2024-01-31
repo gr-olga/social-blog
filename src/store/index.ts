@@ -1,5 +1,5 @@
 import {atom, selector} from "recoil";
-import {getBlogCategories, getBlogs, postBlogs} from "../services/blog-service";
+import {getBlogCategories, getBlogs} from "../services/blog-service";
 import {Category} from "../types";
 
 export const blogsState = atom({
@@ -26,11 +26,3 @@ export const getCategoriesState = selector({
         return res.map((category: Category) => category)
     }
 })
-
-// export const postBlogState = selector({
-//     key: 'postBlogState',
-//     get: async ({get}) => {
-//         const res = await postBlogs(postFormBlog);
-//         return res.data;
-//     }
-// })

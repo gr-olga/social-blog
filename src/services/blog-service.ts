@@ -6,7 +6,8 @@ const Url = 'https://frontend-case-api.sbdev.nl/api/'
 
 export async function getBlogs() {
     try {
-        const res = await axios.get(`${Url}posts?page=1&perPage=10&sortBy=title&sortDirection=asc&searchPhrase=test ber&categoryId=1`,
+        // const res = await axios.get(`${Url}posts?page=${page}`,
+        const res = await axios.get(`${Url}posts`,
             {headers: {'token': token}});
         return res.data;
     } catch (e) {
