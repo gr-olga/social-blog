@@ -2,11 +2,11 @@ import axios from "axios";
 import {BlogPost} from "../types";
 
 const token = 'pj11daaQRz7zUIH56B9Z'
-const Url = 'https://frontend-case-api.sbdev.nl/api/'
+export const API_URL = 'https://frontend-case-api.sbdev.nl/api/'
 
 export async function getBlogs() {
     try {
-        const res = await axios.get(`${Url}posts`,
+        const res = await axios.get(`${API_URL}posts`,
             {headers: {'token': token}});
         return res.data;
     } catch (e) {
@@ -16,7 +16,7 @@ export async function getBlogs() {
 
 export async function getPaginationData(page: number) {
     try {
-        const res = await axios.get(`${Url}posts?page=${page}`,
+        const res = await axios.get(`${API_URL}posts?page=${page}`,
             {headers: {'token': token}});
         return res.data;
     } catch (e) {
@@ -26,7 +26,7 @@ export async function getPaginationData(page: number) {
 
 export async function getBlogCategories() {
     try {
-        const res = await axios.get(`${Url}categories`,
+        const res = await axios.get(`${API_URL}categories`,
             {headers: {'token': token}});
         return res.data;
     } catch (e) {
@@ -36,7 +36,7 @@ export async function getBlogCategories() {
 
 export async function postBlogs(data: BlogPost): Promise<void> {
     try {
-        const res = await axios.post(`${Url}posts`, data, {headers: {'token': token}})
+        const res = await axios.post(`${API_URL}posts`, data, {headers: {'token': token}})
         return res.data;
     } catch (e) {
         console.log(e)
