@@ -5,6 +5,7 @@ export interface BlogState {
     content: string;
     created_at: string;
 }
+
 export interface InitialState {
     blogs: BlogState[];
     categories: Category[];
@@ -17,9 +18,9 @@ export interface Category {
     updated_at: null | string;
 }
 
-export interface BlogPost{
-    title:string
-    content:string
+export interface BlogPost {
+    title: string
+    content: string
     category_id: number
     image?: string
 }

@@ -1,7 +1,6 @@
 import Pagination from "react-js-pagination"
 import {useState} from "react";
 import './paginationComponent.scss';
-// import 'react-js-pagination/dist/styles.css';
 
 type PaginationProps = {
     postsPerPage: number,
@@ -19,12 +18,12 @@ export default function PaginationComponent({postsPerPage, totalPosts, onChangeP
 
     return (
         <div className="pagination">
-                <Pagination
-                    activePage={currentPage}
-                    itemsCountPerPage={postsPerPage}
-                    totalItemsCount={totalPosts}
-                    onChange={handlePageChange}
-                />
+            <Pagination
+                activePage={currentPage}
+                itemsCountPerPage={postsPerPage}
+                totalItemsCount={totalPosts}
+                onChange={handlePageChange}
+            />
         </div>
     );
 }

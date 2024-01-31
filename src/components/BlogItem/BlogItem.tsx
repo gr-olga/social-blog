@@ -8,7 +8,8 @@ export default function BlogItem(props: BlogState) {
 
     return (
         <div className={styles.blogItem}>
-            <div className={styles.blogItem__header}  style={{background: `no-repeat, url('${API_URL}/storage/${img_url}')`}}>
+            <div className={styles.blogItem__header}
+                 style={{background: `no-repeat, url('${API_URL}/storage/${img_url}')`}}>
                 <div className={styles.blogItem__headerItem}>{date}</div>
                 <div className={styles.blogItem__headerItem}>{category.name}</div>
             </div>
