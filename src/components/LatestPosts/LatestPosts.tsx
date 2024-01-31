@@ -4,10 +4,9 @@ import {useRecoilValue} from "recoil";
 import {getBlogsState} from "../../store";
 import {BlogState} from "../../types";
 import {useState} from "react";
-import {getBlogs} from "../../services/blog-service";
 
 export default function LatestPosts() {
-     const blogs = useRecoilValue(getBlogsState);
+    const blogs = useRecoilValue(getBlogsState);
     const [displayingBlogs, setDisplayingBlogs] = useState(4);
 
     function downloadMoreBlogs() {
