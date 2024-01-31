@@ -3,12 +3,13 @@
   margin: 15px 5px 15px 0;
 
   a {
-    padding: 8px;
+    padding: 0 8px;
     color: #333;
     text-decoration: none;
+    border-radius: 5px;
 
     &:hover {
-      background-color: #eee;
+      background-color: #868686;
     }
   }
 
@@ -16,6 +17,7 @@
     background-color: #E95E30;
     color: #fff;
     border: 1px solid #E95E30;
+    border-radius: 5px;
   }
 }
 
